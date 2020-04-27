@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 import input_data
 
 if __name__=='__main__':
-    # 拟合一条曲线例子
+    # 拟合一条曲线例子，tensorboard画图
     def add_layer(inputs,in_size,out_size,n_layer,activation_function=None):
         layer_name='layer%s'%n_layer
         with tf.name_scope(layer_name):
