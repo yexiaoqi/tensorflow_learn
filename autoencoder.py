@@ -55,7 +55,7 @@ if __name__ == '__main__':
     y_true = x
 
     cost = tf.reduce_mean(tf.pow(y_true - y_pred, 2))
-    #cost=tf.reduce_mean(tf.reduce_sum(y_true-y_pred,reduction_indices=[1]))
+    # cost=tf.reduce_mean(tf.reduce_sum(y_true-y_pred,reduction_indices=[1]))
     optimizer = tf.train.AdamOptimizer(learning_rate).minimize(cost)
 
     with tf.Session() as sess:
@@ -77,12 +77,6 @@ if __name__ == '__main__':
             a[0][i].imshow(np.reshape(mnist.test.images[i], (28, 28)))
             a[1][i].imshow(np.reshape(encode_decode[i], (28, 28)))
         plt.show()
-
-
-
-
-
-
 
     # 代码二，只显示encoder后的数据
     mnist = input_data.read_data_sets('MNIST_data', one_hot=False)
