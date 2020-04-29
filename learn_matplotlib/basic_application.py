@@ -25,5 +25,15 @@ plt.xticks(new_ticks)
 # 格式化转义 字符串首尾 r'$...$' （matplotlib中），就是把\ 变成了空格，实际上直接'really bad'这种字符串也行
 plt.yticks([-2,-1.8,-1,1.22,3],['really bad',r'$bad$',r'$normal$',r'$good$',r'$really\ good$'])
 
+ax=plt.gca()#gca是‘get current axes’的缩写
+ax.spines['right'].set_color('none')
+ax.spines['top'].set_color('none')
+
+ax.xaxis.set_ticks_position('bottom')
+ax.spines['bottom'].set_position(('data',0))
+
+ax.yaxis.set_ticks_position('left')
+ax.spines['left'].set_position(('data',0))
+
 plt.show()
 
