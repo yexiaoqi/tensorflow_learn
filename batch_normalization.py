@@ -16,13 +16,14 @@ def plot_his(inputs, inputs_norm):
     # j=0对应inputs，j=1对应inputs_norm
     for j, all_inputs in enumerate([inputs, inputs_norm]):
         for i, input in enumerate(all_inputs):
+            #从1开始计数，所以i + 1
             plt.subplot(2, len(all_inputs), j * len(all_inputs) + (i + 1))
             plt.cla()
             if i == 0:
                 the_range = (-7, 10)
             else:
                 the_range = (-1, 1)
-            plt.hist(input.ravel(), bins=15, range=the_range, color='#FF5733')
+            plt.hist(input.ravel(), bins=15, range=the_range, color='r')
             plt.yticks(())
             if j == 1:
                 plt.xticks(the_range)
@@ -89,7 +90,8 @@ def built_net(xs, ys, norm):
         # mean,var = mean_var_with_update()
         on_train_bool = tf.constant(on_train, tf.bool)
         mean, var = tf.cond(on_train_bool, mean_var_with_update, lambda: (ema.average(fc_mean), ema.average(fc_var)))
-        xs = tf.nn.batch_normalization(xs, fc_mean, fc_var, shift, scale, epsilon)
+        # xs = tf.nn.batch_normalization(xs, fc_mean, fc_var, shift, scale, epsilon)
+        xs = tf.nn.batch_normalization(xs, mean, var, shift, scale, epsilon)
 
     layer_inputs = [xs]
 
