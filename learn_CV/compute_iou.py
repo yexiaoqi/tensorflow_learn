@@ -20,7 +20,7 @@ def compute_iou(box1, box2, wh=False):
         xmin2, ymin2 = int(box2[0] - box2[2] / 2.0), int(box2[1] - box2[3] / 2.0)
         xmax2, ymax2 = int(box2[0] + box2[2] / 2.0), int(box2[1] + box2[3] / 2.0)
 
-    ## 获取矩形框交集对应的左上角和右下角的坐标（intersection）
+    ## 获取矩形框交集对应的左下角和右上角的坐标（intersection）
     xx1 = np.max([xmin1, xmin2])
     yy1 = np.max([ymin1, ymin2])
     xx2 = np.min([xmax1, xmax2])
